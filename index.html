@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seishin | Safety Academy</title>
+    <meta name="description" content="Plataforma de capacitación premium para la industria automotriz Seishin.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="not-logged-in">
+    <!-- Auth Screen -->
+    <div id="authView" class="auth-overlay">
+        <div class="auth-card">
+            <div class="logo" style="margin-bottom: 2rem;">Seishin</div>
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Usuario</label>
+                    <input type="text" id="username" placeholder="Tu usuario" required>
+                </div>
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="primary-btn">Ingresar al Portal</button>
+                <p id="loginError" style="color: var(--danger); margin-top: 1rem; font-size: 0.9rem; display: none;">Credenciales incorrectas</p>
+            </form>
+        </div>
+    </div>
+
+    <div class="app-wrapper">
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="logo" style="display: flex; justify-content: space-between; align-items: center;">
+                Seishin
+                <button class="close-sidebar" id="closeSidebar">&times;</button>
+            </div>
+            
+            <nav class="nav-links">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" data-view="dashboard">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        Academia
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-view="profile">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        Mi Progreso
+                    </a>
+                </li>
+                <li class="nav-item" id="navSettings">
+                    <a href="#" class="nav-link" data-view="settings">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                        Gestión
+                    </a>
+                </li>
+                <li class="nav-item" style="margin-top: auto;">
+                    <a href="#" class="nav-link" id="logoutBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                        Cerrar Sesión
+                    </a>
+                </li>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-dashboard">
+            <!-- VIEW: DASHBOARD -->
+            <div id="dashboardView" class="view-container active">
+                <header class="dashboard-header">
+                    <div class="header-content">
+                        <h1 id="welcomeUser">Bienvenido a Seishin</h1>
+                        <p id="systemWelcomeMsg">¡Seguridad primero! Bienvenido al portal de capacitación SafeAuto.</p>
+                    </div>
+                </header>
+
+                <div class="filters-container">
+                    <div class="tabs">
+                        <button class="tab active">Todos</button>
+                        <button class="tab">Operación</button>
+                        <button class="tab">Seguridad</button>
+                    </div>
+                    <div class="search-bar">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <input type="text" placeholder="Filtrar módulos...">
+                    </div>
+                </div>
+
+                <section class="training-grid" id="trainingGrid"></section>
+            </div>
+
+            <!-- VIEW: PROFILE -->
+            <div id="profileView" class="view-container">
+                <header>
+                    <h1 style="font-size: 2.5rem; margin-bottom: 2rem;">Expediente de Seguridad</h1>
+                </header>
+                <div class="profile-card">
+                    <div class="user-info">
+                        <div class="user-avatar" id="profileAvatar">S</div>
+                        <div>
+                            <h2 id="profileName">Nombre Usuario</h2>
+                            <p style="color: var(--text-muted);" id="profileRole">Cargo en Seishin</p>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <h3>Acreditación General</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="overallProgressFill"></div>
+                        </div>
+                        <p id="progressText">Has acreditado 0 cursos.</p>
+                    </div>
+                </div>
+                <h3>Historial de Capacitación</h3>
+                <section class="training-grid" id="ongoingCoursesGrid" style="margin-top: 2rem;"></section>
+            </div>
+
+            <!-- VIEW: SETTINGS (ADMIN) -->
+            <div id="settingsView" class="view-container">
+                <header>
+                    <h1 style="font-size: 2.5rem; margin-bottom: 2rem;">Administración Seishin</h1>
+                </header>
+                
+                <div id="adminLock" class="auth-card" style="margin: 0 auto; max-width: 500px;">
+                    <h3>Acceso a Gestión</h3>
+                    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Ingresa la clave de seguridad para modificar el sistema.</p>
+                    <div class="form-group">
+                        <input type="password" id="adminPass" placeholder="Clave Administrador">
+                    </div>
+                    <button class="primary-btn" id="unlockAdmin">Acceder</button>
+                </div>
+
+                <div id="adminContent" class="hidden">
+                    <div class="admin-grid">
+                        <div class="config-card">
+                            <h3>➕ Nueva Capacitación</h3>
+                            <form id="courseForm">
+                                <div class="form-group">
+                                    <label>Nombre del Módulo</label>
+                                    <input type="text" id="courseTitle" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Link de Video / Plataforma (Opcional si subes archivo)</label>
+                                    <input type="text" id="courseVideo" placeholder="Pega el link aquí">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Contenido Multimedia (Video/Imagen)</label>
+                                    <div class="upload-zone" id="dropZone">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                        <p id="uploadStatus">Haz clic o arrastra un archivo local</p>
+                                        <input type="file" id="fileInput" hidden accept="video/*,image/*">
+                                        <span style="font-size: 0.8rem; color: var(--text-muted);">Formatos aceptados: MP4, JPG, PNG</span>
+                                    </div>
+                                    <input type="hidden" id="localMediaUrl">
+                                </div>
+
+                                <h4 style="margin: 1.5rem 0 1rem; color: var(--primary);">🧠 Evaluación Técnica (Pregunta 1)</h4>
+                                <div class="form-group">
+                                    <label>Pregunta del Curso</label>
+                                    <input type="text" id="courseQuestion" placeholder="Ej. ¿Qué se debe hacer antes de operar?" required>
+                                </div>
+                                <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem;">
+                                    <div>
+                                        <label>Opción 1</label>
+                                        <input type="text" id="courseOpt0" required>
+                                    </div>
+                                    <div>
+                                        <label>Opción 2</label>
+                                        <input type="text" id="courseOpt1" required>
+                                    </div>
+                                    <div>
+                                        <label>Opción 3 (Correcta)</label>
+                                        <input type="text" id="courseOpt2" required placeholder="Esta será la resp. correcta">
+                                    </div>
+                                </div>
+                                
+                                <button type="submit" class="primary-btn" style="margin-top: 1rem;">Cargar a la Academia</button>
+                            </form>
+                        </div>
+
+                        <div class="config-card">
+                            <h3>⚙️ Sistema Global</h3>
+                            <form id="globalConfigForm">
+                                <div class="form-group">
+                                    <label>Link Global de Evaluaciones (Google Forms)</label>
+                                    <input type="text" id="globalFormsLink" placeholder="https://forms.gle/...">
+                                </div>
+                                <div class="form-group">
+                                    <label>Mensaje de Bienvenida Institucional</label>
+                                    <textarea id="globalWelcomeMsg" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="primary-btn" style="background: var(--dark);">Guardar Cambios</button>
+                            </form>
+                        </div>
+
+                        <!-- USER MANAGEMENT -->
+                        <div class="config-card" style="grid-column: span 2;">
+                            <h3>👥 Control de Usuarios y Progreso</h3>
+                            
+                            <!-- Alta de Nuevo Usuario -->
+                            <div style="background: var(--bg-accent); padding: 1.5rem; border-radius: var(--radius-md); margin-bottom: 2rem;">
+                                <h4 style="margin-bottom: 1rem; color: var(--primary);">➕ Alta de Nuevo Funcionario</h4>
+                                <form id="addUserForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; align-items: end;">
+                                    <div class="form-group" style="margin-bottom: 0;">
+                                        <label>ID / Usuario</label>
+                                        <input type="text" id="newUsername" placeholder="ej. operario5" required>
+                                    </div>
+                                    <div class="form-group" style="margin-bottom: 0;">
+                                        <label>Nombre Completo</label>
+                                        <input type="text" id="newName" placeholder="Juan Pérez" required>
+                                    </div>
+                                    <div class="form-group" style="margin-bottom: 0;">
+                                        <label>Cargo</label>
+                                        <input type="text" id="newRole" placeholder="Técnico B" required>
+                                    </div>
+                                    <div class="form-group" style="margin-bottom: 0;">
+                                        <label>Contraseña</label>
+                                        <input type="text" id="newPassword" placeholder="Contraseña segura" required>
+                                    </div>
+                                    <button type="submit" class="primary-btn" style="height: 54px; margin-bottom: 0px;">Dar de Alta</button>
+                                </form>
+                            </div>
+
+                            <div style="overflow-x: auto;">
+                                <table class="admin-table" id="userManagementTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Usuario</th>
+                                            <th>Nombre Completo</th>
+                                            <th>Puesto</th>
+                                            <th>Acreditaciones</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="userTableBody">
+                                        <!-- Dynamic content -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for details -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-container" id="modalContainer"></div>
+    </div>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>
