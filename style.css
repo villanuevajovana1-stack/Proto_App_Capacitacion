@@ -637,6 +637,19 @@ body {
   color: #b71c1c;
 }
 
+.course-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.add-user-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  align-items: end;
+}
+
 /* Dark Accents */
 .sidebar {
   background: var(--dark);
@@ -820,11 +833,6 @@ body {
     grid-template-columns: 1fr;
   }
   
-  .card-img-wrapper {
-    width: 100px;
-    height: 100px;
-  }
-
   .training-info-grid, .admin-grid {
     grid-template-columns: 1fr;
   }
@@ -836,8 +844,45 @@ body {
   .auth-card {
     padding: 2rem;
   }
+}
+
+@media (max-width: 600px) {
+  .training-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .card-img-wrapper {
+    width: 100%;
+    height: 180px;
+  }
+
+  .card-stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .user-info {
+    flex-direction: column;
+    text-align: center;
+  }
   
-  #addUserForm {
+  .course-options-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .add-user-form-grid {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .admin-table {
+    font-size: 0.9rem;
+  }
+  
+  .admin-table th, .admin-table td {
+    padding: 0.8rem;
   }
 }

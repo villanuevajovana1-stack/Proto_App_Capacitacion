@@ -165,7 +165,7 @@
                                     <label>Pregunta del Curso</label>
                                     <input type="text" id="courseQuestion" placeholder="Ej. ¿Qué se debe hacer antes de operar?" required>
                                 </div>
-                                <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem;">
+                                <div class="form-group course-options-grid">
                                     <div>
                                         <label>Opción 1</label>
                                         <input type="text" id="courseOpt0" required>
@@ -206,7 +206,7 @@
                             <!-- Alta de Nuevo Usuario -->
                             <div style="background: var(--bg-accent); padding: 1.5rem; border-radius: var(--radius-md); margin-bottom: 2rem;">
                                 <h4 style="margin-bottom: 1rem; color: var(--primary);">➕ Alta de Nuevo Funcionario</h4>
-                                <form id="addUserForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; align-items: end;">
+                                <form id="addUserForm" class="add-user-form-grid">
                                     <div class="form-group" style="margin-bottom: 0;">
                                         <label>ID / Usuario</label>
                                         <input type="text" id="newUsername" placeholder="ej. operario5" required>
